@@ -14,26 +14,39 @@ var shortestDistance = function(wordsDict, word1, word2) {
 //          replace result if absolute difference is less           
     
     let shortestDistance = Infinity;
-    let idxWord1 = 0;
-    let idxWord2 = 0;
-    let foundWord1 = false;
-    let foundWord2 = false;
+    let idxWord1 = null;
+    let idxWord2 = null;
+    let i = 0
     
-    for (let i = 0; i < wordsDict.length; i++) {
-        console.log("current word: ", wordsDict[i])
-        if (word1 === wordsDict[i]) {
-            foundWord1 = true;
-            idxWord1 = i;
-        } else if (word2 === wordsDict[i]) {
-            foundWord2 = true;
-            idxWord2 = i;
+    if (shortestDistance === 1) return shortestDistance;
+    
+    while (i < wordsDict.length) {
+        if (word1 === wordsDict[i]) idxWord1 = i;
+    
+        if (word2 === wordsDict[i]) idxWord2 = i;
+        
+        if (idxWord1 !== null && idxWord2 !== null) {
+            shortestDistance = Math.min(shortestDistance, Math.abs(idxWord1 - idxWord2))
         }
-        if(foundWord1 && foundWord2){
-            if (shortestDistance > Math.abs(idxWord1 - idxWord2)) {
-                shortestDistance = Math.abs(idxWord1 - idxWord2);
-            }
-        }
+        i++;
     }
+    
+//     O(N*M) time 
+    // for (let i = 0; i < wordsDict.length; i++) {
+    //     console.log("current word: ", wordsDict[i])
+    //     if (word1 === wordsDict[i]) {
+    //         foundWord1 = true;
+    //         idxWord1 = i;
+    //     } else if (word2 === wordsDict[i]) {
+    //         foundWord2 = true;
+    //         idxWord2 = i;
+    //     }
+    //     if(foundWord1 && foundWord2){
+    //         if (shortestDistance > Math.abs(idxWord1 - idxWord2)) {
+    //             shortestDistance = Math.abs(idxWord1 - idxWord2);
+    //         }
+    //     }
+    // }
     return shortestDistance;
     
 };
