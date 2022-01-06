@@ -46,21 +46,21 @@ var depthSumInverse = function(nestedList) {
 //     recursion?
 //     base cases => if empty, not valid
     
-    let maxDepth = 0;
     let sum = 0;
-    let depthSum = 0;
+    let levelSum = 0;
+    let queue = [...nestedList];
     
-    let traverse = (ni, depth) => {
-        if (ni.isInteger()) {
-            depthSum += ni.getInteger() * depth;
-            sum += ni.getInteger();
-            maxDepth = Math.max(maxDepth, depth)
-            return;
+    while (queue.length) {
+        const len = queue.length
+        for (let i = 0; i < len; i++) {
+            const ni = queue.pop();
+            if (ni.isInteger()) {
+                levelSum += ni.getInteger();
+            } else {
+                queue.unshift(...ni.getList());
+            }
         }
-        ni.getList().forEach(i => traverse(i, depth + 1))
+        sum += levelSum;
     }
-    nestedList.forEach(i => traverse(i, 1))
-    
-    return (maxDepth + 1) * sum - depthSum;
-    
+    return sum;
 };
