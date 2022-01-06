@@ -47,25 +47,20 @@ var depthSumInverse = function(nestedList) {
 //     base cases => if empty, not valid
     
     let maxDepth = 0;
-    let arr = [];
+    let sum = 0;
+    let depthSum = 0;
     
     let traverse = (ni, depth) => {
         if (ni.isInteger()) {
-            console.log("integer: ", ni)
-            arr[depth] = (arr[depth] || 0) + ni.getInteger();
-            console.log(arr)
+            depthSum += ni.getInteger() * depth;
+            sum += ni.getInteger();
+            maxDepth = Math.max(maxDepth, depth)
             return;
         }
         ni.getList().forEach(i => traverse(i, depth + 1))
     }
-    nestedList.forEach(i => traverse(i, 0))
-    // console.log(arr)
-    maxDepth = arr.length
-    let sum = 0;
+    nestedList.forEach(i => traverse(i, 1))
     
-    for (let i = arr.length; i >= 0; i--) {
-        sum += (maxDepth - i) * (arr[i] || 0);
-    }
-    return sum;
+    return (maxDepth + 1) * sum - depthSum;
     
 };
