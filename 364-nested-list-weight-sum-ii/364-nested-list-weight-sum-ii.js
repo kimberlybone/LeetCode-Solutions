@@ -43,8 +43,8 @@
 var depthSumInverse = function(nestedList) {
 //     weight = maxDepth - depth + 1
 //     maxDepth = most nested integer
-//     recursion?
-//     base cases => if empty, not valid
+//     BFS
+//     get the sum of each level to simulate nested depth
     
     let sum = 0;
     let levelSum = 0;
