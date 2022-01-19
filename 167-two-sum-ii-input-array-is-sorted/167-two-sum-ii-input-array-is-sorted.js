@@ -11,19 +11,18 @@ var twoSum = function(numbers, target) {
     
     let left = 0;
     let right = numbers.length - 1;
-    let sum = numbers[left] + numbers[right];
+    // let sum = numbers[left] + numbers[right];
     
-    while (sum !== target){
-        sum = numbers[left] + numbers[right];
-        
-        console.log("left: ", numbers[left])
-        console.log("right: ", numbers[right])
-        console.log("Sum: ", sum, "\n")
-        if (sum > target){
+    while (left < right){
+        const sum = numbers[left] + numbers[right];
+
+        if (sum > target) {
             right--;
         } else if (sum < target) {
             left++;
+        } else {
+            return [left + 1, right + 1]
         }
     }
-    return [left + 1, right + 1];
+    // return [left + 1, right + 1];
 };
