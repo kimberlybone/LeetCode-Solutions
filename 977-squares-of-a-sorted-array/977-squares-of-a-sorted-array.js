@@ -3,20 +3,22 @@
  * @return {number[]}
  */
 var sortedSquares = function(nums) {
-    let squares = [];
+    const squares = [];
     let left = 0;
     let right = nums.length - 1;
     
-    while (left <= right) {
+    if (nums.length < 1) return nums;
+    
+    for (let i = right; i >= 0; i--) {
         
         if (Math.abs(nums[left]) > Math.abs(nums[right])) {
-            squares.push(nums[left] ** 2);
+            squares[i] = nums[left] ** 2;
             left++;
         } else {
-            squares.push(nums[right] ** 2);
+            squares[i] = nums[right] ** 2;
             right--;
         }
     }
     
-    return squares.reverse();
+    return squares;
 };
