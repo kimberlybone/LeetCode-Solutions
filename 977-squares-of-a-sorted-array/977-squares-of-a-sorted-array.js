@@ -6,9 +6,7 @@ var sortedSquares = function(nums) {
     const squares = [];
     let left = 0;
     let right = nums.length - 1;
-    
-    if (nums.length < 1) return nums;
-    
+
     for (let i = right; i >= 0; i--) {
         
         if (Math.abs(nums[left]) > Math.abs(nums[right])) {
