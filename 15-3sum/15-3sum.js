@@ -23,9 +23,9 @@ var threeSum = function(nums) {
                 if (sum === 0 && ((nums[p1] !== nums[p1 -1]) || (nums[p2] !== nums[p2 + 1]))) {
                     result.push([ nums[i], nums[p1], nums[p2] ]);
                     while (nums[p1] === nums[p1 + 1]) p1++;
-                    // while(nums[p2] === nums[p2 - 1]) p2--;
+                    while(nums[p2] === nums[p2 - 1]) p2--;
                     p1++;
-                    // p2--;
+                    p2--;
                 } else if (sum < 0)  p1++;
                 else  p2--;
             }
