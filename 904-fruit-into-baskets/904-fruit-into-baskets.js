@@ -15,7 +15,7 @@ var totalFruit = function(fruits) {
     
     for (let end = 0; end < fruits.length; end++) {
         
-        !counts[fruits[end]] ? counts[fruits[end]] = 1 : counts[fruits[end]]++;
+        counts[fruits[end]] = counts[fruits[end]] + 1 || 1
         
         while (Object.keys(counts).length > 2) {
             const fruitCount = counts[fruits[start]];
