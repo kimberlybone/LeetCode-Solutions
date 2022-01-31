@@ -23,7 +23,6 @@ var totalFruit = function(fruits) {
             
             if (fruitCount - 1 === 0) delete counts[fruit];
             else counts[fruit] = fruitCount - 1;
-            console.log(fruitCount)
             
             start++;
         }
