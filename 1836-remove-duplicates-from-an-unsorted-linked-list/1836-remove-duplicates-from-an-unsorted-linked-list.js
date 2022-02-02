@@ -23,14 +23,16 @@ var deleteDuplicatesUnsorted = function(head) {
         current = current.next;
     }
     
+    let dummyHead = new ListNode();
+    dummyHead.next = head;
     current = head;
-    let prev = null;
+
     
+    let prev = dummyHead;
+
     while (current !== null) {
         
-        if (countNodes.get(current.val) > 1 && current.val === head.val) {
-            head = head.next;
-        } else if (countNodes.get(current.val) > 1) {
+        if (countNodes.get(current.val) > 1) {
             prev.next = current.next;
         } else {
             prev = current;
@@ -38,6 +40,6 @@ var deleteDuplicatesUnsorted = function(head) {
         
         current = current.next;
     }
-    return head;
+    return dummyHead.next;
     
 };
